@@ -1,0 +1,58 @@
+/* Tokyo Night — wofi launcher */
+window {
+    margin: 0;
+    background-color: rgba(26, 27, 38, 0.96);
+    border: 2px solid #7aa2f7;
+    border-radius: 14px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+#input {
+    margin: 12px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #16161e;
+    color: #c0caf5;
+    outline: none;
+}
+#input:focus {
+    border: 1px solid #bb9af7;
+}
+
+#inner-box {
+    margin: 4px 12px 12px 12px;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0;
+}
+
+#text {
+    color: #c0caf5;
+    margin: 0 8px;
+}
+
+#entry {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+#entry:selected {
+    background: linear-gradient(90deg, #7aa2f7, #bb9af7);
+}
+#entry:selected #text {
+    color: #1a1b26;
+    font-weight: 700;
+}
+
+#entry image {
+    margin-right: 6px;
+}

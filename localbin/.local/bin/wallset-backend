@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/.config/wallpapers"
+MONITOR="eDP-1"
+HYPR_CONF="$HOME/.config/hypr/hyprpaper.conf"
+SDDM_WALLPAPER="/usr/share/wallpapers/Next/contents/images/5120x2880.png"
+
+# Pick random image
+FILE=$1
+
+if [ -z "$FILE" ]; then
+  notify-send "No images found in $WALLPAPER_DIR"
+  exit 1
+fi
+
+# Set the wallpaper via swww
+swww img "$FILE" \
+   --transition-type any \
+   --transition-duration 1.4 \
+   --transition-fps 60 \
+   --transition-step 50
+
+# Generate color schemes (guarded so a missing tool never aborts the rest)
+command -v wallust >/dev/null 2>&1 && wallust run "$FILE"
+command -v matugen >/dev/null 2>&1 && matugen image "$FILE" --prefer darkness -m light
+command -v pywal_cava >/dev/null 2>&1 && pywal_cava
+
+# copy wallpaper for the lock screen
+cp "$FILE" "$HOME/.config/background"
+
+# Reload notification daemon theme
+command -v swaync-client >/dev/null 2>&1 && swaync-client -rs &
+# Update hyprpaper.conf (overwrite safely)
+#cat >"$HYPR_CONF" <<EOF
+# preload = $FILE
+#wallpaper = $MONITOR,$FILE
+# EOF
+
+notify-send "Wallpaper changed to '$(basename "$FILE")'"

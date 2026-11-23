@@ -1,0 +1,22 @@
+# ── matugen / mode-system generated outputs (regenerated on wallpaper change) ──
+# These are produced from matugen/.config/matugen/templates/ — never hand-edit, never track.
+hypr/.config/hypr/colors/colors.conf
+kitty/.config/kitty/colors/colors.conf
+rofi/.config/rofi/colors/colors-matugen.rasi
+waybar/.config/waybar/colors.css
+waybar/.config/waybar/style.css
+swaync/.config/swaync/colors-swaync.css
+btop/.config/btop/themes/matugen.theme
+matugen/.config/matugen/generated/
+
+# ── runtime state / caches ──
+localbin/.local/bin/current-theme.txt
+*.bak
+*.bak-*
+
+# ── editor / os noise ──
+*.swp
+.DS_Store
+
+# mode-system runtime pointer
+hypr/.config/hypr/current-mode.conf

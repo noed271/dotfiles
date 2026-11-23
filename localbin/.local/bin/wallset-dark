@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Dark counterpart of `wallset`: pick a wallpaper via rofi, then apply it with a
+# DARK matugen colorscheme (via wallset-dark-backend).
+
+dir="$HOME/.config/rofi/launchers/type-3"
+theme='style-3'
+WALL_DIR="$HOME/.config/wallpapers"
+CWD="$(pwd)"
+
+IFS=$'\n'
+cd "$WALL_DIR" || exit
+
+chosen=$(for a in *.jpg *.png *.; do echo -en "$a\0icon\x1f$a\n" ; done | rofi -dmenu -p "Select Wallpaper (Dark)" -theme "${dir}/${theme}.rasi")
+
+if [ -n "$chosen" ]; then
+    wallset-dark-backend "$WALL_DIR/$chosen"
+fi
+
+cd "$CWD" || exit

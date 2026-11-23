@@ -1,0 +1,90 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Prompt colors are pinned to TokyoNight (Night) and are NOT matugen-managed.
+# matugen's [templates.starship] is disabled so wallpaper changes no longer
+# overwrite this file. Edit the palette below to retheme the prompt.
+
+format = '''
+[░▒▓](color3)[󰣇](fg:#16161e bg:color3)$username[](bg:color1 fg:color3)$directory[](fg:color1 bg:color2)$git_branch$git_status[](fg:color2 bg:color2)$nodejs$rust$golang$php[](fg:color2 bg:color0)$conda[ ](fg:color0)$line_break$character'''
+
+palette = 'colors'
+
+# ── TokyoNight (Night) palette ────────────────────────────────────────
+[palettes.colors]
+# segment backgrounds (left → right): host=blue, dir=magenta, git/langs=green
+color0  = '#1a1b26'   # base bg (final separator)
+color1  = '#bb9af7'   # magenta — directory
+color2  = '#9ece6a'   # green   — git + languages
+color3  = '#7aa2f7'   # blue    — username/host
+color4  = '#7dcfff'   # cyan
+color5  = '#9d7cd8'   # purple
+color6  = '#9ece6a'   # green (git_status pad — matches color2)
+color7  = '#16161e'   # dark text on light segments (directory fg)
+color8  = '#7dcfff'
+color9  = '#7aa2f7'
+color10 = '#16161e'
+color11 = '#9ece6a'   # language segment bg (matches color2)
+color12 = '#414868'   # terminal black — conda / time bg
+# foreground used by git/language segments (dark text on green)
+matugen-color7 = '#16161e'
+
+[username]
+show_always = true
+style_user = "fg:#16161e bg:color3 "
+style_root = "fg:#16161e bg:color3 "
+format = "[ $user ]($style)"
+disabled = false
+
+
+[directory]
+style = "fg:color7 bg:color1"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:color2"
+format = '[ $symbol $branch ](fg:matugen-color7 bg:color2)'
+
+[git_status]
+style = "bg:color6"
+format = '[($all_status$ahead_behind )](fg:matugen-color7 bg:color2)'
+
+[nodejs]
+symbol = ""
+style = "bg:color11"
+format = '[[ $symbol ($version) ](fg:matugen-color7 bg:color2)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color11"
+format = '[[ $symbol ($version) ](fg:matugen-color7 bg:color2)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color11"
+format = '[[ $symbol ($version) ](fg:matugen-color7 bg:color2)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color11"
+format = '[[ $symbol ($version) ](fg:matugen-color7 bg:color2)]($style)'
+
+[conda]
+symbol = " "
+style = "bg:color12"
+format = '[ $symbol$environment ](fg:#c0caf5 bg:color12)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:color12"
+format = '[[  $time ](fg:#c0caf5 bg:color12)]($style)'
